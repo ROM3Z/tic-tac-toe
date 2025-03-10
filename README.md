@@ -36,3 +36,6 @@ La IA evaluará todos los posibles movimientos de **O** en la profundidad 1, y l
 
 Limitar la **profundidad** evita que el algoritmo tarde demasiado en calcular la mejor jugada. A medida que la profundidad aumenta, el número de jugadas posibles se incrementa exponencialmente, lo que hace que el algoritmo sea más lento. Mantener la profundidad dentro de un rango razonable asegura que la IA sea inteligente sin sacrificar el rendimiento del juego.
 
+---
+
+Creado por [ROM3Z](https://github.com/ROM3Z) 🚀  
