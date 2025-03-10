@@ -25,9 +25,10 @@ Esta **profundidad máxima** limita cuántas jugadas hacia adelante la IA evalua
 
 Si la IA tiene una profundidad de 2, y el tablero actual está así:
 
-X | O |
-| X | O
-| | X
+| X | O |   |
+|---|---|---|
+|   | X | O |
+|   |   | X |
 
 La IA evaluará todos los posibles movimientos de **O** en la profundidad 1, y luego simulará las respuestas de **X** en la profundidad 2.
 
