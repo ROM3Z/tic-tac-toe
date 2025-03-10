@@ -1,0 +1,138 @@
+/* Estilo general para el tablero */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(80px, 1fr));
+  grid-template-rows: repeat(3, minmax(80px, 1fr));
+  gap: 10px;
+  margin: auto;
+  padding: 15px;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1; /* Mantiene proporción cuadrada */
+  background: linear-gradient(145deg, #2c2c2c, #1e1e1e);
+  border: 5px solid #555;
+  border-radius: 16px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+
+.square {
+  width: 100px;
+  height: 100px;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.square:hover {
+  background-color: #e0e0e0;
+}
+
+.text-blue-500 {
+  color: blue; /* Azul para X */
+}
+
+.text-red-500 {
+  color: red;  /* Rojo para O */
+}
+
+/* Estilo para cada celda */
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eeeeee;
+  border: 3px solid #ccc;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+/* Efecto al pasar el mouse por encima */
+.cell:hover {
+  background: #d6d6d6;
+  transform: scale(1.07);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto al hacer clic */
+.cell:active {
+  transform: scale(0.95);
+}
+
+/* Estilo para las fichas X y O */
+.cell.x {
+  color: #ff3b3b;
+  text-shadow: 3px 3px 6px rgba(255, 59, 59, 0.5);
+}
+
+.cell.o {
+  color: #2196F3;
+  text-shadow: 3px 3px 6px rgba(33, 150, 243, 0.5);
+}
+
+/* Estilo para el mensaje de victoria */
+.winner-message {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  background: linear-gradient(135deg, #ff8a00, #e52e71);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para los botones */
+.restart-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 14px 28px;
+  background: linear-gradient(145deg, #4caf50, #388e3c);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.restart-btn:hover {
+  background: #2e7d32;
+  transform: scale(1.1);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 500px) {
+  .board {
+      max-width: 280px;
+  }
+  
+  .cell {
+      font-size: 2rem;
+  }
+  
+  .winner-message {
+      font-size: 1.4rem;
+      padding: 8px;
+  }
+  
+  .restart-btn {
+      font-size: 0.9rem;
+      padding: 10px 20px;
+  }
+}
