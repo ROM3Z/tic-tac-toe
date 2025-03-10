@@ -1,54 +1,37 @@
-# React + TypeScript + Vite
+# Tres en Línea (Tic Tac Toe) con Minimax
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un juego de **Tres en Línea (Tic Tac Toe)** implementado en **React + TypeScript** con el algoritmo **Minimax** para la toma de decisiones del jugador de la IA.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El juego de **Tres en Línea** se juega en un tablero de 3x3 donde dos jugadores, uno jugando con **X** y el otro con **O**, toman turnos para marcar las casillas del tablero. El objetivo es alinear tres de tus símbolos (X o O) en línea, ya sea horizontal, vertical o diagonalmente.
 
-## Expanding the ESLint configuration
+## Minimax: Algoritmo de Decisión
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+El algoritmo **Minimax** es utilizado por la IA (jugador **O**) para determinar la mejor jugada posible. Simula todas las jugadas futuras posibles y evalúa cuál es la mejor jugada para maximizar las posibilidades de ganar y minimizar las posibilidades de perder. 
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Profundidad en Minimax
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+La **profundidad** (`maxDepth`) en el algoritmo Minimax se refiere a cuántos movimientos futuros la IA evaluará antes de tomar una decisión. Cuanto mayor sea la profundidad, más jugadas posibles se consideran, pero también más tiempo toma calcular la mejor jugada.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Por ejemplo, si la profundidad está establecida en **2**, la IA evaluará hasta **dos jugadas** hacia adelante:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. La IA evalúa todas las jugadas posibles para su turno.
+2. Luego, simula las jugadas que el jugador **X** podría hacer como respuesta.
+
+Esta **profundidad máxima** limita cuántas jugadas hacia adelante la IA evaluará, equilibrando la inteligencia de la IA y la velocidad del juego.
+
+### Ejemplo de Profundidad
+
+Si la IA tiene una profundidad de 2, y el tablero actual está así:
+
+X | O |
+| X | O
+| | X
+
+La IA evaluará todos los posibles movimientos de **O** en la profundidad 1, y luego simulará las respuestas de **X** en la profundidad 2.
+
+#### ¿Por qué limitar la profundidad?
+
+Limitar la **profundidad** evita que el algoritmo tarde demasiado en calcular la mejor jugada. A medida que la profundidad aumenta, el número de jugadas posibles se incrementa exponencialmente, lo que hace que el algoritmo sea más lento. Mantener la profundidad dentro de un rango razonable asegura que la IA sea inteligente sin sacrificar el rendimiento del juego.
+
